@@ -16,7 +16,7 @@
             $credentials = $request->only('email', 'password');
 
             try {
-                if (! $token = JWTAuth::attempt($credentials)) {
+                if (!$token = JWTAuth::attempt($credentials)) {
                     return response()->json(['error' => 'invalid_credentials'], 400);
                 }
             } catch (JWTException $e) {

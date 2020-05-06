@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/git-user-score/{name}', 'GitController@score');
 
-Route::middleware('auth:api')->get('/git-user-score/{name}', 'GitController@score');
+//Route::middleware('auth:api')->get('/git-user-score/{name}', 'GitController@score');
 
 
 Route::post('register', 'UserController@register');
@@ -24,6 +24,7 @@ Route::post('login', 'UserController@authenticate');
 Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => ['jwt.verify']], function() {
+	Route::get('/git-user-score/{name}', 'GitController@score');
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::get('closed', 'DataController@closed');
 });
